@@ -30,7 +30,7 @@ namespace PAC.WebAPI
         }
 
         [HttpGet]
-        public IActionResult ObtenerUsuarios([FromQuery] int? edad)
+        public IActionResult ObtenerEstudiantes([FromQuery] int? edad)
         {
             if (edad == null || edad == 0)
             {
@@ -42,7 +42,7 @@ namespace PAC.WebAPI
         }
 
         [HttpGet("{id}")]
-        public IActionResult EliminarUsuario([FromRoute] int id)
+        public IActionResult ObtenerEstudiante([FromRoute] int id)
         {
             return Ok(servicioEstudiante.GetStudentById(id));
         }
