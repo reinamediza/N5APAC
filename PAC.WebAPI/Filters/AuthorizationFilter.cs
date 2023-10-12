@@ -15,7 +15,7 @@ namespace PAC.WebAPI.Filters
             if (string.IsNullOrEmpty(authorizationHeader) || !Guid.TryParse(authorizationHeader, out token))
             {
                 // Si asigno un result se corta la ejecucion de la request y ya devuelve la response
-                context.Result = new ObjectResult(new { Message = "No se encuentra el header de Authorization" })
+                context.Result = new ObjectResult(new { Message = "No puedo authorizarme”" })
                 {
                     StatusCode = 401
                 };
