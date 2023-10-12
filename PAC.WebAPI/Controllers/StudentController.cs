@@ -14,5 +14,32 @@ namespace PAC.WebAPI
     [Route("[controller]")]
     public class StudentController : ControllerBase
     {
+        private readonly IStudentLogic servicioEstudiante;
+
+        public StudentController(IStudentLogic servicioEstudiante)
+        {
+            this.servicioEstudiante = servicioEstudiante;
+        }
+
+        [ServiceFilter(typeof(AuthorizationFilter))]
+        [HttpPost]
+        public IActionResult CrearEstudiante([FromBody] Student estudiante )
+        {
+            servicioEstudiante.InsertStudents(estudiante);
+            return Ok("Estudiante creado con exito");
+        }
+
+        [HttpGet]
+        public IActionResult ObtenerUsuarios()
+        {
+            return Ok(servicioEstudiante.GetStudents());
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult EliminarUsuario([FromRoute] int id)
+        {
+            return Ok(servicioEstudiante.GetStudentById(id));
+        }
+
     }
 }

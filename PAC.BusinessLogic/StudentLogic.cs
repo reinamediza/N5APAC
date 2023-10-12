@@ -27,6 +27,9 @@ public class StudentLogic : IStudentLogic
 
     public void InsertStudents(Student? student)
     {
+        if (student.Name.Equals("") || student == null){
+            throw new ArgumentException("El estudiante que desea agregar tiene datos incorrectos");
+        }
         _studentsRepository.InsertStudents(student);
     }
 }
