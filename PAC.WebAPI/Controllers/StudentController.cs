@@ -30,9 +30,15 @@ namespace PAC.WebAPI
         }
 
         [HttpGet]
-        public IActionResult ObtenerUsuarios()
+        public IActionResult ObtenerUsuarios([FromQuery] int? edad)
         {
-            return Ok(servicioEstudiante.GetStudents());
+            if (edad == null || edad == 0)
+            {
+                return Ok(servicioEstudiante.GetStudents());
+            }else
+            {
+                return Ok(servicioEstudiante.GetStudents((int)edad));
+            }
         }
 
         [HttpGet("{id}")]

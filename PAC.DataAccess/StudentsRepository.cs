@@ -19,6 +19,11 @@ public class StudentsRepository<T> : IStudentsRepository<Student> where T : clas
         return students;
     }
 
+    public IEnumerable<Student> GetStudents(int edad)
+    {
+        return students.Where(x=> x.Age == edad).ToList();
+    }
+
     public void InsertStudents(Student? student)
     {
         student!.Id = students.Count + 1;

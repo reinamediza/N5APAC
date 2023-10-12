@@ -25,6 +25,11 @@ public class StudentLogic : IStudentLogic
         return _studentsRepository.GetStudents();
     }
 
+    public IEnumerable<Student> GetStudents(int edad)
+    {
+        return _studentsRepository.GetStudents(edad);
+    }
+
     public void InsertStudents(Student? student)
     {
         if (student.Name.Equals("") || student == null){
